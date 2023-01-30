@@ -1,7 +1,7 @@
 import { Category } from '../model/Category';
 import {
-    ICategoriesRepository,
-    ICreateCategoryDTO,
+  ICategoriesRepository,
+  ICreateCategoryDTO,
 } from './ICategoriesRepository';
 
 export class CategoriesRepository implements ICategoriesRepository {

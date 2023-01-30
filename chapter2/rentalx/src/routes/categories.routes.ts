@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { CategoriesRepository } from '../modules/cars/repositories/CategoriesRepository';
-import { CreateCategoryService } from '../modules/cars/services/CreateCategoryService';
+import { createCategoryController } from '../modules/cars/useCases/createCategory';
 
 const categoryRepository = new CategoriesRepository();
 
@@ -18,13 +18,7 @@ const categoryAlreadyExists = (req, res, next) => {
 };
 
 categoriesRoutes.post('', categoryAlreadyExists, (request, response) => {
-  const { name, description } = request.body;
-
-  const createCategoryService = new CreateCategoryService(categoryRepository);
-
-  createCategoryService.execute({ name, description });
-
-  return response.status(201).json();
+  return createCategoryController.handle(request, response);
 });
 
 categoriesRoutes.get('', (request, response) => {
@@ -32,4 +26,3 @@ categoriesRoutes.get('', (request, response) => {
 });
 
 export { categoriesRoutes };
-
