@@ -42,6 +42,8 @@ export class ImportCategoryUseCase {
       if (!existCategory) {
         this.categoriesRepository.create({ name, description });
       }
+
+      return category;
     });
   }
 }
