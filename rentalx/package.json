@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@types/uuid": "^9.0.0",
@@ -10,7 +11,7 @@
     "pg": "^8.9.0",
     "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.6.0",
-    "typeorm": "^0.3.11",
+    "typeorm": "0.2.45",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
