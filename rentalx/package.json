@@ -1,7 +1,11 @@
 {
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down --rmi local",
+    "migrations:create": "typeorm migration:create -n ",
+    "migrations:run": "typeorm migrate:run"
   },
   "dependencies": {
     "@types/uuid": "^9.0.0",
