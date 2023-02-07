@@ -7,20 +7,10 @@ import {
 } from '../ICategoriesRepository';
 
 export class CategoriesRepository implements ICategoriesRepository {
-  private static INSTANCE: CategoriesRepository;
-
   private repository: Repository<Category>;
 
   constructor() {
-    this.repository = getRepository(Category);
-  }
-
-  public static getInstance(): CategoriesRepository {
-    if (!CategoriesRepository.INSTANCE) {
-      CategoriesRepository.INSTANCE = new CategoriesRepository();
-    }
-
-    return CategoriesRepository.INSTANCE;
+    this.repository = getRepository<Category>(Category);
   }
 
   async create({ description, name }: ICreateCategoryDTO): Promise<void> {
@@ -38,7 +28,7 @@ export class CategoriesRepository implements ICategoriesRepository {
   }
 
   async findByName(name: string): Promise<Category> {
-    const category = this.repository.findOne({ name });
+    const category = await this.repository.findOne({ name });
     return category;
   }
 }
