@@ -1,3 +1,5 @@
+import { getRepository, Repository } from 'typeorm';
+
 import { Specification } from '../../entities/Specification';
 import {
   ICreateSpecificationDTO,
@@ -5,22 +7,23 @@ import {
 } from '../ISpecificationRepository';
 
 export class SpecificationRepository implements ISpecificationRepository {
-  private specifications: Specification[] = [];
-  create({ description, name }: ICreateSpecificationDTO): void {
-    const specifiction = new Specification();
+  private repository: Repository<Specification>;
 
-    if (this.findByName(name))
-      throw new Error(`Specification "${name}" already exists`);
-
-    Object.assign(specifiction, { description, name, createdAt: new Date() });
-
-    this.specifications.push(specifiction);
+  constructor() {
+    this.repository = getRepository(Specification);
   }
 
-  findByName(name: string): Specification {
-    const specification = this.specifications.find(
-      (specifiction) => specifiction.name === name
-    );
+  async create({ description, name }: ICreateSpecificationDTO): Promise<void> {
+    const specification = this.repository.create({
+      description,
+      name,
+    });
+
+    await this.repository.save(specification);
+  }
+
+  async findByName(name: string): Promise<Specification> {
+    const specification = await this.repository.findOne({ name });
 
     return specification;
   }
