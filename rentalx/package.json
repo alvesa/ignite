@@ -2,9 +2,9 @@
   "scripts": {
     "dev": "ts-node-dev --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "typeorm:migration": "npm run typeorm migration:run",
+    "typeorm:migration:run": "npm run typeorm migration:run",
     "docker:up": "docker-compose up -d",
-    "docker:full": "docker-compose up -d && npm run typeorm:migration",
+    "docker:full": "docker-compose up -d && npm run typeorm:migration:run",
     "docker:down-rmi": "docker-compose down --rmi local",
     "docker:down": "docker-compose down",
     "migrations:create": "typeorm migration:create -n ",

@@ -9,16 +9,9 @@ export class CreateUserUseCase {
     @inject('UsersRepository') private usersRepository: IUserRepository
   ) {}
 
-  async execute({
-    name,
-    username,
-    email,
-    password,
-    driver_license,
-  }: ICreateUserDTO) {
+  async execute({ name, email, password, driver_license }: ICreateUserDTO) {
     await this.usersRepository.create({
       name,
-      username,
       email,
       password,
       driver_license,
