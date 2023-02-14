@@ -24,6 +24,9 @@ export class User {
   @CreateDateColumn()
   created_at: Date;
 
+  @Column({ nullable: true })
+  avatar?: string;
+
   constructor() {
     if (!this.id) this.id = uuidV4();
   }
