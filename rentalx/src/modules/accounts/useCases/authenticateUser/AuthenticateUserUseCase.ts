@@ -35,7 +35,7 @@ export class AuthenticateUserUseCase {
       throw new AppError(`User or password incorrect`, 401);
     }
 
-    const token = sign({ email }, 'asfsdf321dfa321', {
+    const token = sign({ email, user_id: user.id }, 'asfsdf321dfa321', {
       subject: user.id,
       expiresIn: '1d',
     });

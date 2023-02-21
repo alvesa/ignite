@@ -25,7 +25,7 @@ export async function ensureAuthenticated(
     const { user_id } = verify(token, 'asfsdf321dfa321') as IPayload;
     const usersRepository = new UsersRepository();
 
-    const user = usersRepository.findById(user_id);
+    const user = await usersRepository.findById(user_id);
 
     if (!user) {
       throw new AppError(`User does not exists`, 401);
