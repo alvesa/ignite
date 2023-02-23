@@ -3,7 +3,7 @@ import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '../../../../errors/AppError';
-import { UsersRepository } from '../../repositories/implementations/UsersRepository';
+import { IUserRepository } from '../../repositories/IUserRepository';
 
 interface IRequest {
   email: string;
@@ -20,7 +20,7 @@ interface IResponse {
 export class AuthenticateUserUseCase {
   constructor(
     @inject('UsersRepository')
-    private usersRepository: UsersRepository
+    private usersRepository: IUserRepository
   ) {}
   async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
