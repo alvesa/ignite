@@ -8,8 +8,8 @@ import { AppError } from '@errors/AppError';
 import swaggerFile from '../../../swagger.json';
 import { router } from './routes';
 
-import '../../../database';
 import '../../container';
+import '../typeorm';
 
 const app = express();
 const PORT = 3333;
