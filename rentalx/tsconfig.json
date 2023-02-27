@@ -17,6 +17,9 @@
       ],
       "@errors/*": [
         "errors/*"
+      ],
+      "@utils/*": [
+        "utils/*"
       ]
     },
     "resolveJsonModule": true,
