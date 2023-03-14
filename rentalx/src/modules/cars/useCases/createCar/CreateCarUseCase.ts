@@ -1,3 +1,4 @@
+import { Car } from '../../infra/typeorm/entities/Car';
 import { ICarsRepository } from '../../repositories/ICarsRepository';
 
 interface IRequest {
@@ -21,14 +22,14 @@ export class CreateCarUseCase {
     fine_amount,
     brand,
     category_id,
-  }: IRequest): Promise<void> {
+  }: IRequest): Promise<Car> {
     const carAlreadyExists = await this.carsRepository.findByLicensePlate(
       license_plate
     );
 
     if (carAlreadyExists) throw new Error('Car already exists');
 
-    await this.carsRepository.create({
+    const car = await this.carsRepository.create({
       name,
       description,
       daily_rate,
@@ -37,5 +38,7 @@ export class CreateCarUseCase {
       brand,
       category_id,
     });
+
+    return car;
   }
 }
