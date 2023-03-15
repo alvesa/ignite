@@ -8,7 +8,7 @@ import { IUserRepository } from '../../repositories/IUserRepository';
 @injectable()
 export class CreateUserUseCase {
   constructor(
-    @inject('UsersRepository') private usersRepository: IUserRepository
+    @inject('UsersRepository') private readonly usersRepository: IUserRepository
   ) {}
 
   async execute({ name, email, password, driver_license }: ICreateUserDTO) {
