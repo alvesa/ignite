@@ -5,7 +5,7 @@ import { IDateProvider } from '../DateProvider/IDateProvider';
 
 dayjs.extend(utc);
 
-export class DatyjsDateProvider implements IDateProvider {
+export class DayjsDateProvider implements IDateProvider {
   dateNow(): Date {
     return dayjs().toDate();
   }
