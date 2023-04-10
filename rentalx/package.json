@@ -9,7 +9,7 @@
     "docker:down": "docker-compose down",
     "migrations:create": "typeorm migration:create -n ",
     "migrations:run": "typeorm migrate:run",
-    "test": "jest",
+    "test": "set NODE_ENV=test && jest --runInBand --detectOpenHandles",
     "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {
