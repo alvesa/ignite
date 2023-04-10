@@ -6,8 +6,6 @@ import { ImportCategoryController } from '../../../../modules/cars/useCases/impo
 import { ListCategoriesController } from '../../../../modules/cars/useCases/listCategories/ListCategoriesController';
 import { ensureAdmin } from '../middlewares/ensureAdmin';
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
-import { importCategoryController } from '../modules/cars/useCases/importCategory';
-import { listCategoriesController } from '../modules/cars/useCases/listCategories';
 
 const categoriesRoutes: Router = Router();
 

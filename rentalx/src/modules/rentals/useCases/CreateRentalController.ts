@@ -1,6 +1,6 @@
+import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { Request, Response } from '../../../@types/express/index.d';
 import { CreateRentalUseCase } from './CreateRentalUseCase';
 
 export class CreateRentalController {
