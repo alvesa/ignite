@@ -4,6 +4,10 @@ import { IRentalRepository } from '@modules/rentals/repositories/IRentalReposito
 import { Rental } from '../../entities/Rental';
 
 export class RentalsRepositoryInMemory implements IRentalRepository {
+  rentals: Rental[] = [];
+  async findById(id: string): Promise<Rental> {
+    return this.rentals.find((x) => x.id === id);
+  }
   async create({ car_id, user_id, expected_return_date }: ICreateRentalDTO) {
     const rental = new Rental();
 
@@ -18,7 +22,6 @@ export class RentalsRepositoryInMemory implements IRentalRepository {
 
     return rental;
   }
-  rentals: Rental[] = [];
   async findOpenRentalByCar(car_id: string): Promise<Rental> {
     return this.rentals.find(
       (rental) => rental.car_id === car_id && !rental.end_date
