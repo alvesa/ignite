@@ -4,21 +4,25 @@ import { AppError } from '@errors/AppError';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { DayjsDateProvider } from '@shared/container/providers/implementations/DayjsDateProvider';
 
+import { CarsRepositoryInMemory } from '../../cars/repositories/in-memory/CarsRepositoryInMemory';
 import { RentalsRepositoryInMemory } from '../infra/typeorm/repositories/in-memory/RentalsRepositoryInMemory';
 import { CreateRentalUseCase } from './CreateRentalUseCase';
 
 let createRentalUseCase: CreateRentalUseCase;
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory;
 let dayjsProvider: IDateProvider;
+let carsRepositoryInMemory: CarsRepositoryInMemory;
 
 describe('Create Rental', () => {
   const dayAdd24Hours = dayjs().add(1, 'day').toDate();
   beforeEach(() => {
     rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
     dayjsProvider = new DayjsDateProvider();
+    carsRepositoryInMemory = new CarsRepositoryInMemory();
     createRentalUseCase = new CreateRentalUseCase(
       rentalsRepositoryInMemory,
-      dayjsProvider
+      dayjsProvider,
+      carsRepositoryInMemory
     );
   });
 

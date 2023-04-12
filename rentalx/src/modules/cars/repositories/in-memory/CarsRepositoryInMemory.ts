@@ -5,6 +5,13 @@ import { ICarsRepository } from '../ICarsRepository';
 
 export class CarsRepositoryInMemory implements ICarsRepository {
   cars: Car[] = [];
+
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    const car = this.cars.find((x) => x.id === id);
+
+    car.available = available;
+  }
+
   async findById(id: string): Promise<Car> {
     return this.cars.find((x) => x.id === id);
   }
