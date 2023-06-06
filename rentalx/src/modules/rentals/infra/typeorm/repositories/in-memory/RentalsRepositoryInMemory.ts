@@ -4,6 +4,9 @@ import { IRentalRepository } from '@modules/rentals/repositories/IRentalReposito
 import { Rental } from '../../entities/Rental';
 
 export class RentalsRepositoryInMemory implements IRentalRepository {
+  async findByUser(user_id: string): Promise<Rental[]> {
+    return this.rentals.filter((r) => r.user_id === user_id);
+  }
   rentals: Rental[] = [];
   async findById(id: string): Promise<Rental> {
     return this.rentals.find((x) => x.id === id);

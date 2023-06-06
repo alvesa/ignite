@@ -2,9 +2,8 @@ import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '@errors/AppError';
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
+import { IRentalRepository } from '@modules/rentals/repositories/IRentalRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
-
-import { IRentalRepository } from '../repositories/IRentalRepository';
 
 interface IRequest {
   user_id: string;

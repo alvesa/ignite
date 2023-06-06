@@ -160,7 +160,7 @@
             "description": "Success"
           },
           "400": {
-            "description": "Email or password incorrect"
+            "description": "User or password incorrect"
           }
         }
       }
