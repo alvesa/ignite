@@ -3,4 +3,5 @@ export interface IDateProvider {
   convertToUTC(date: Date): string;
   dateNow(): Date;
   compareInDays(startDate: Date, endDate: Date): number;
+  addDays(days: number): Date;
 }
