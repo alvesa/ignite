@@ -11,6 +11,7 @@ export class UsersTokensRepository implements IUsersTokensRepository {
   contructor() {
     this.repository = getRepository(UsersTokens);
   }
+
   async create({
     expires_date,
     refresh_token,
@@ -25,5 +26,21 @@ export class UsersTokensRepository implements IUsersTokensRepository {
     await this.repository.save(userToken);
 
     return userToken;
+  }
+
+  async deleteById(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
+
+  async findByUserIdAndRefreshToken(
+    user_id: string,
+    refresh_token: string
+  ): Promise<UsersTokens> {
+    const usersTokens = await this.repository.findOne({
+      user_id,
+      refresh_token,
+    });
+
+    return usersTokens;
   }
 }
