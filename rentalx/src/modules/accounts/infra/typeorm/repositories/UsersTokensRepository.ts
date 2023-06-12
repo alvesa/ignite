@@ -12,6 +12,12 @@ export class UsersTokensRepository implements IUsersTokensRepository {
     this.repository = getRepository(UsersTokens);
   }
 
+  async findByRefreshToken(refresh_token: string): Promise<UsersTokens> {
+    const userToken = await this.repository.findOne({ refresh_token });
+
+    return userToken;
+  }
+
   async create({
     expires_date,
     refresh_token,
