@@ -3,8 +3,8 @@ import { inject, injectable } from 'tsyringe';
 import { v4 as uuidV4 } from 'uuid';
 
 import { AppError } from '@errors/AppError';
-import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
-import { UsersTokensRepository } from '@modules/accounts/infra/typeorm/repositories/UsersTokensRepository';
+import { IUserRepository } from '@modules/accounts/repositories/IUserRepository';
+import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { IMailProvider } from '@shared/container/providers/MailProvider/IMailProvider';
 
@@ -12,9 +12,9 @@ import { IMailProvider } from '@shared/container/providers/MailProvider/IMailPro
 export class SendForgotPasswordMailUseCase {
   constructor(
     @inject('UsersRepository')
-    private usersRepository: UsersRepository,
+    private usersRepository: IUserRepository,
     @inject('UsersTokensRepository')
-    private usersTokensRepository: UsersTokensRepository,
+    private usersTokensRepository: IUsersTokensRepository,
     @inject('DayjsDateProvider')
     private dateProvider: IDateProvider,
     @inject('EtherealMailProvider')
