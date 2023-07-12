@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 tmp/
+
+db/*.db
