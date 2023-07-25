@@ -1,4 +1,4 @@
-import { test, expect, it } from 'vitest'
+import { test, expect } from 'vitest'
 test('Should be able to sum 2 numbers', () => {
   expect(Sum(1, 2)).toBe(3)
 })
